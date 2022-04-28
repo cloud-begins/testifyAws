@@ -41,8 +41,27 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HW1 {
 	
+	static private Double averageCPU=0.0;
+    static private Double maxCPU=0.0;
+    static public String insId1="i-06d86faac5c4a9b86";
+    public static Double getAverageCPU() {
+    	return averageCPU;
+    }
+
+    public static void setAverageCPU(Double averageCPU) {
+    	HW1.averageCPU = averageCPU;
+    }
+
+    public static Double getMaxCPU() {
+    	return maxCPU;
+    }
+
+    public static void setMaxCPU(Double maxCPU) {
+    	HW1.maxCPU = maxCPU;
+    }
+	
 public static void main(String args[]) {
-	SpringApplication.run(HW1.class, args);
+	//SpringApplication.run(HW1.class, args);
 	 
      try {
       
@@ -75,7 +94,7 @@ public static void main(String args[]) {
          // set time 
      
          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         String startDate = "2022-04-20";
+         String startDate = "2022-04-25";
          Date date = null;
 		try {
 			date = sdf.parse(startDate);
@@ -94,7 +113,7 @@ public static void main(String args[]) {
          statRequest1.withEndTime(date);
        
          /* specify an instance */
-         String insId1="i-06d86faac5c4a9b86";
+        
          ArrayList<Dimension> dimensions1 = new ArrayList<Dimension>();
          dimensions1.add(new Dimension().withName("InstanceId").withValue("i-06d86faac5c4a9b86"));
         
@@ -109,16 +128,20 @@ public static void main(String args[]) {
              System.out.println("Instance 1: " + statResult1.toString());
              System.out.println(statResult1.getDatapoints());
              List<Datapoint> dataList = statResult1.getDatapoints();
-             Double averageCPU = 0.0;
-             Double maxCPU=0.0;
+            
              
           
             
              for (Datapoint d : dataList) {
-                 averageCPU = d.getAverage();
-                 maxCPU=d.getMaximum();
-                 System.out.println("average CPU utlilization: " + averageCPU);
-                 System.out.println("Max CPU utilization : "+ maxCPU);
+//                averageCPU = d.getAverage();
+//                 maxCPU=d.getMaximum();
+//                 System.out.println("average CPU utilization: " + averageCPU);
+//                 System.out.println("Max CPU utilization : "+ maxCPU);
+            	 setAverageCPU(d.getAverage());
+            	 setMaxCPU(d.getMaximum());
+                 System.out.println("average CPU utilization: " + getAverageCPU());
+                 System.out.println("Max CPU utilization : "+ getMaxCPU());
+                
                  
              }
             
@@ -132,4 +155,6 @@ public static void main(String args[]) {
      }
 
 }
+
+
 }

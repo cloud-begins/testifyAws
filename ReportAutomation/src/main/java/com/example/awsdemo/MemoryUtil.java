@@ -45,6 +45,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MemoryUtil {
 	
+	static Double averageMemory = 0.0;
+    static Double maxMemory=0.0;
+public static Double getAverageMemory() {
+		return averageMemory;
+	}
+	public static void setAverageMemory(Double averageMemory) {
+		MemoryUtil.averageMemory = averageMemory;
+	}
+	public static Double getMaxMemory() {
+		return maxMemory;
+	}
+	public static void setMaxMemory(Double maxMemory) {
+		MemoryUtil.maxMemory = maxMemory;
+	}
 public static void main(String args[]) {
 	SpringApplication.run(MemoryUtil.class, args);
 	 
@@ -111,16 +125,20 @@ public static void main(String args[]) {
              System.out.println("Instance 1: " + statResult1.toString());
              System.out.println(statResult1.getDatapoints());
              List<Datapoint> dataList = statResult1.getDatapoints();
-             Double averageMemory = 0.0;
-             Double maxMemory=0.0;
+             
              
           
             
              for (Datapoint d : dataList) {
-            	 averageMemory = d.getAverage();
-            	 maxMemory=d.getMaximum();
-                 System.out.println("average CPU utlilization: " + averageMemory);
-                 System.out.println("Max CPU utilization : "+ maxMemory);
+//            	 averageMemory = d.getAverage();
+//            	 maxMemory=d.getMaximum();
+//                 System.out.println("average CPU utilization: " + averageMemory);
+//                 System.out.println("Max CPU utilization : "+ maxMemory);
+            	 setAverageMemory(d.getAverage());
+            	 setMaxMemory(d.getMaximum());
+               System.out.println("average CPU utilization: " + getAverageMemory());
+               System.out.println("Max CPU utilization : "+ getMaxMemory());
+            	 
                  
              }
             
