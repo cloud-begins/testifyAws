@@ -115,30 +115,32 @@ public static void main(String args[]) {
       
          // set time 
      
+         Date date1 = new Date();
          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         String startDate = "2022-05-01";
-         Date date = null;
+         //String startDate = "2022-05-03";
+         String date = sdf.format(date1);
+         Date endDate = null;
 		try {
-			date = sdf.parse(startDate);
+			endDate = sdf.parse(date);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
          Calendar calendar = Calendar.getInstance();
-         calendar.setTime(date);
+         calendar.setTime(endDate);
          calendar.add(Calendar.DATE, -1);
-         Date endDate = calendar.getTime();
+         Date startDate = calendar.getTime();
 
          System.out.println(endDate);
          System.out.println(date);
-         statRequest1.withStartTime(endDate);
-         statRequest1.withEndTime(date);
+         statRequest1.withStartTime(startDate);
+         statRequest1.withEndTime(endDate);
          
-         statRequest2.withStartTime(endDate);
-         statRequest2.withEndTime(date);
+         statRequest2.withStartTime(startDate);
+         statRequest2.withEndTime(endDate);
          
-         statRequest3.withStartTime(endDate);
-         statRequest3.withEndTime(date);
+         statRequest3.withStartTime(startDate);
+         statRequest3.withEndTime(endDate);
        
          /* specify an instance */
         

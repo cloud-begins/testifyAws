@@ -90,24 +90,26 @@ public static void main(String args[]) {
          
          /* set time */
 //       
+         Date date1 = new Date();
          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         String startDate = "2022-04-20";
-         Date date = null;
+         //String startDate = "2022-05-03";
+         String date = sdf.format(date1);
+         Date endDate = null;
 		try {
-			date = sdf.parse(startDate);
+			endDate = sdf.parse(date);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
          Calendar calendar = Calendar.getInstance();
-         calendar.setTime(date);
+         calendar.setTime(endDate);
          calendar.add(Calendar.DATE, -1);
-         Date endDate = calendar.getTime();
+         Date startDate = calendar.getTime();
 
          System.out.println(endDate);
          System.out.println(date);
-         statRequest1.withStartTime(endDate);
-         statRequest1.withEndTime(date);
+         statRequest1.withStartTime(startDate);
+         statRequest1.withEndTime(endDate);
        
          /* specify an instance */
          String insId1="i-06d86faac5c4a9b86";
