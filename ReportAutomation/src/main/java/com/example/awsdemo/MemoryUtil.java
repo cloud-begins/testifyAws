@@ -59,8 +59,8 @@ public static Double getAverageMemory() {
 	public static void setMaxMemory(Double maxMemory) {
 		MemoryUtil.maxMemory = maxMemory;
 	}
-public static void main(String args[]) {
-	SpringApplication.run(MemoryUtil.class, args);
+public static void memUtil() {
+	
 	 
      try {
       

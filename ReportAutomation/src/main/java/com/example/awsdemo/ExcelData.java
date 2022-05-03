@@ -19,8 +19,8 @@ public class ExcelData {
 		  
 		  //SpringApplication.run(HW1.class, args);
 		  //SpringApplication.run(ExcelData.class, args);
-		  HW1.main(args);
-		  MemoryUtil.main(args);
+		  HW1.cpuUtil();
+		  MemoryUtil.memUtil();
 		  
 	        try (XSSFWorkbook workbook = new XSSFWorkbook()) {
 				// spreadsheet object
